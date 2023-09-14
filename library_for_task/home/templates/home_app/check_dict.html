@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}
+<title>Главная страница</title>
+{% endblock %}
+{% block page_content %}
+
+
+<button type="button" class="navbar-toggler">
+    <a class="navbar-brand" href="{% url 'home_page' pk=user.id %}"><h3>Назад<br></h3></a>
+</button>
+
+
+{% for i in register %}
+<h3>{{ i.user_id }}|
+    {{ i.user_name }}&nbsp;
+    {{ i.user_surname }}&nbsp;
+    {{ i.book_id }}|
+    {{ i.book_name }}&nbsp;
+    {{ i.date_take }}&nbsp;--&nbsp;
+    {% if i.date_return %}
+    {{ i.date_return }}
+    {% else %}
+    ...
+    {% endif %}
+</h3>
+
+{% endfor %}
+
+
+{% endblock %}

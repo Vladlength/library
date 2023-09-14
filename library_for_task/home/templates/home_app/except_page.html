@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}
+<title>Доступные книги</title>
+{% endblock %}
+{% block page_content %}
+<button type="button" class="navbar-toggler">
+    <a class="navbar-brand" href="{% url 'entry_page' %}"><h3>К списку пользователей<br></h3></a>
+</button>
+
+<div style="margin: 80px;">
+
+    <h3 style='position: absolute; top:20%;
+  left: 50%;
+  transform: translate(-50%, -50%); font-family: "DAYTON"; color: white;  font-size: 80px;'>Что-то пошло не так</h3>
+</div>
+
+
+{% endblock %}

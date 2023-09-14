@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}
+<title>Главная страница</title>
+{% endblock %}
+{% block page_content %}
+
+
+<button type="button" class="navbar-toggler">
+    <a class="navbar-brand" href="{% url 'entry_page' %}"><h3>Назад<br></h3></a>
+</button>
+
+
+<div style="margin: 80px;">
+
+    <h3 style='position: absolute; top:20%;
+  left: 50%;
+  transform: translate(-50%, -50%); font-family: "DAYTON"; color: white;  font-size: 80px;'">{{ user.surname}}&nbsp{{ user.name}}&nbsp{{ user.patronymic}}</h3>
+</div>
+
+
+    {% if user.name == 'admin' %}
+<div style='position: absolute; top:30%;
+  left: 50%;
+  transform: translate(-50%, -50%); font-family: "DAYTON"; color: white;  font-size: 80px;'">
+<div style="white-space: nowrap;">
+    <button type="button" class="w-70 btn btn-lg btn-outline-primary"
+            style="display: inline-block; margin-right: 10px;">
+        <a class="navbar-brand" href="{% url 'books' user.id %}"><h3>Список доступных книг<br></h3></a>
+    </button>
+
+    <button type="button" class="w-70 btn btn-lg btn-outline-primary"
+            style="display: inline-block; margin-left: 10px;">
+        <a class="navbar-brand" href="{% url 'all_users_books' user_id=user.id %}"><h3>Книги выданные читателям<br></h3>
+        </a>
+    </button>
+
+
+    <button type="button" class="w-70 btn btn-lg btn-outline-primary"
+            style="display: inline-block; margin-left: 10px;">
+        <a class="navbar-brand" href="{% url 'check_dict' user_pk=user.id %}"><h3>Учет выдачи/сдачи книг<br></h3></a>
+    </button>
+
+    {% else %}
+    <div style='position: absolute; top:30%;
+  left: 50%;
+  transform: translate(-100%, -50%); font-family: "DAYTON"; color: white;  font-size: 80px;'">
+<div style="white-space: nowrap;">
+    <button type="button" class="w-100 btn btn-lg btn-outline-primary"
+            style="display: inline-block; margin-right: 10px;">
+        <a class="navbar-brand" href="{% url 'books' user.id %}"><h3>Список доступных книг<br></h3></a>
+    </button>
+    <button type="button" class="w-100 btn btn-lg btn-outline-primary"
+            style="display: inline-block; margin-left: 10px;">
+        <a class="navbar-brand" href="{% url 'user_books' user.id %}"><h3>Вернуть книгу<br></h3></a>
+    </button>
+    {% endif %}
+</div>
+
+
+{% endblock %}

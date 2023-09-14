@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}
+<title>Доступные книги</title>
+{% endblock %}
+{% block page_content %}
+<button type="button" class="navbar-toggler">
+    <a class="navbar-brand" href="{% url 'home_page' pk=user_pk %}"><h3>Назад<br></h3></a>
+</button>
+<h3>Вернуть книгу</h3>
+<form method="POST" action="{% url 'book_return' %}">
+    {% csrf_token %}
+    <label for="book_number"><h3>Код книги: </h3></label>
+    <input type="text" id="book_number" name="book_number" required>
+    <input type="hidden" name="user_id" value="{{ user_pk }}">
+    <button type="submit">Вернуть</button>
+</form>
+<br>
+
+<div style="position: absolute; top:40%; background-color: DarkSlateGray;">
+<h3>Мои книги: </h3>
+    {% for book in books %}
+
+    <h1>{{ book.name }}</h1>
+
+    <h3>
+        {{ book.id}}&nbsp
+        {{ book.book_name}}&nbsp|&nbsp
+        {% if book.author_name %}
+        {{ book.author_name}}&nbsp
+        {% endif %}
+        {% if book.author_surname %}
+        {{ book.author_surname}}&nbsp
+        {% endif %}
+        {% if book.author_patronymic %}
+        {{ book.author_patronymic}}
+        {% endif %}
+        <br>
+    </h3>
+
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
